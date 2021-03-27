@@ -1,18 +1,17 @@
 """Function for launch cli-module."""
 import argparse
 import pathlib
-from os import getcwd
+
+DESCRIPTION = 'application for copying files according to the config file'
 
 
 def get_args():
     """Launch cli-module."""
-    parser = argparse.ArgumentParser(description='download and save page')
-    parser.add_argument('url', type=str)
+    parser = argparse.ArgumentParser(
+        description=DESCRIPTION,
+    )
     parser.add_argument(
-        '-o', '--output',
-        default=getcwd(),
-        type=pathlib.Path,
-        help='output dir (default: "сurrent directory")',
+        'path', type=pathlib.Path, help='path to the config file")',
     )
     parser.add_argument(
         '-l', '--loglevel',
@@ -26,7 +25,6 @@ def get_args():
             '''
     )
     args = parser.parse_args()
-    url = args.url
-    path = args.output
+    path = args.path
     log = args.loglevel
-    return url, path, log
+    return path, log

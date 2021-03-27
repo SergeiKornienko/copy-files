@@ -7,11 +7,11 @@ publish:
 		poetry publish --dry-run
 
 package-install:
-		pip install --user dist/*.whl
+		pip install dist/*.whl
 
 lint:
-		poetry run flake8 page_loader
+		poetry run flake8 copy_files
 		poetry run flake8 tests
 
 pytest:
-		poetry run pytest --cov=page_loader tests/ --cov-report xml
+		poetry run pytest --cov=copy_files tests/ --cov-report xml

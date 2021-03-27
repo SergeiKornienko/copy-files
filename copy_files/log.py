@@ -12,7 +12,7 @@ def setup(loglevel=0):
     logging.basicConfig(
         level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(name)s %(message)s',
-        filename='./download.log',
+        filename='./copy.log',
         filemode='w',
     )
     console = logging.StreamHandler()
