@@ -37,7 +37,6 @@ def test_copy():
     files6 = glob.glob('tests/fixtures/6/*')
     for f in files6:
         os.remove(f)
-    print(os.getcwd())
     copy('tests/fixtures/config.xml')
 
 
