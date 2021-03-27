@@ -22,7 +22,10 @@ def copy(path_to_config):
 
 
 def get_path(paths):
-    return join(paths['source_path'], paths['file_name']), paths['destination_path']
+    return (
+        join(paths['source_path'], paths['file_name']),
+        paths['destination_path'],
+    )
 
 
 def open_file(path):
