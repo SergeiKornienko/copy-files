@@ -5,7 +5,7 @@ dist/
 .venv/
 .idea/
 cc-test-reporter
-*.xml
+coverage.xml
 .coverage
 .pytest_cache
 *.log

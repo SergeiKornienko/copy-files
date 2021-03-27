@@ -1,6 +1,6 @@
 from copy_files.copy_files import get_path, prepare
 # import tempfile
-from os.path import join
+# from os.path import join
 
 
 XML = 'tests/fixtures/file.xml'
@@ -16,7 +16,7 @@ PATHS = {
         'file_name': 'server.log',
     },
 }
-PATHS_FILE= {
+PATHS_FILE = {
     'source_path': '/var/log',
     'destination_path': '/etc',
     'file_name': 'server.log',
