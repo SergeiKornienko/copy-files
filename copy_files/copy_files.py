@@ -7,7 +7,7 @@ from xml.etree import ElementTree
 
 def copy(path_to_config):
     paths = prepare(open_file(path_to_config))
-    for path in paths.values():
+    for path in paths:
         (src, dst) = get_path(path)
         with Bar(
                 f"{'Copy '}{src[:70]}{' to '}{dst[:70]}{': '}",
@@ -22,20 +22,18 @@ def copy(path_to_config):
 
 
 def get_path(paths):
-    return (
-        join(paths['source_path'], paths['file_name']),
-        paths['destination_path'],
-    )
+    return join(paths['source_path'], paths['file_name']), paths['destination_path']
 
 
 def open_file(path):
     with open(path, 'r') as infile:
-        return infile.read()
+        content = infile.read()
+    return content
 
 
 def prepare(content_xml):
     root = ElementTree.fromstring(content_xml)
-    paths = {}
-    for i, child in enumerate(root):
-        paths[child.tag + str(i)] = child.attrib
+    paths = []
+    for child in root:
+        paths.append(child.attrib)
     return paths
