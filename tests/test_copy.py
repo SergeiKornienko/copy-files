@@ -38,11 +38,11 @@ def test_copy():
     with open('./tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
         file5 = infile.read()
     assert file2 == file5
-    files4 = glob.glob('./tests/fixtures/4/*')
-    for f in files4:
+    files6 = glob.glob('./tests/fixtures/4/*')
+    for f in files6:
         os.remove(f)
-    files5 = glob.glob('./tests/fixtures/5/*')
-    for f in files5:
+    files7 = glob.glob('./tests/fixtures/5/*')
+    for f in files7:
         os.remove(f)
 
 
