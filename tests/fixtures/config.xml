@@ -1,12 +1,12 @@
 <config>
     <file
-            source_path="./tests/fixtures/1/"
-            destination_path="./tests/fixtures/4/"
+            source_path="tests/fixtures/1/"
+            destination_path="tests/fixtures/4/"
             file_name="Krug S. Круг С. - Не заставляйте меня думать"
     />
     <file
-            source_path="./tests/fixtures/2/"
-            destination_path="./tests/fixtures/5/"
+            source_path="tests/fixtures/2/"
+            destination_path="tests/fixtures/5/"
             file_name="Операционная система Unix (Робачевский, 2003).djvu"
     />
 </config>
