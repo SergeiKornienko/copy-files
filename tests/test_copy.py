@@ -1,9 +1,7 @@
-from copy_files.copy_files import copy, get_path, prepare
+from copy_files.copy_files import copy, prepare
 import os
 import glob
-# import tempfile
-# from os.path import join
-
+import pytest
 
 XML = 'tests/fixtures/file.xml'
 PATHS = [
@@ -28,16 +26,23 @@ DST_FILE = '/etc'
 
 
 def test_copy():
+    copy('tests/fixtures/config.xml')
+    with open('tests/fixtures/1/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
+        file1 = infile.read()
+    with open('tests/fixtures/4/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
+        file4 = infile.read()
+    assert file1 == file4
+    with open('tests/fixtures/2/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
+        file2 = infile.read()
+    with open('tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
+        file5 = infile.read()
+    assert file2 == file5
     files4 = glob.glob('tests/fixtures/4/*')
     for f in files4:
         os.remove(f)
     files5 = glob.glob('tests/fixtures/5/*')
     for f in files5:
         os.remove(f)
-    files6 = glob.glob('tests/fixtures/6/*')
-    for f in files6:
-        os.remove(f)
-    copy('tests/fixtures/config.xml')
 
 
 def test_prepare():
@@ -46,5 +51,11 @@ def test_prepare():
     assert PATHS == prepare(xml_input)
 
 
-def test_get_path():
-    assert get_path(PATHS_FILE) == (SRC_FILE, DST_FILE)
+def test_copy_exception():
+    with pytest.raises(OSError):
+        copy('tests/fixtures/config2.xml')
+    with pytest.raises(OSError):
+        copy('tests/fixtures/config3.xml')
+    with pytest.raises(Exception):
+        copy('tests/fixtures/config4.xml')
+

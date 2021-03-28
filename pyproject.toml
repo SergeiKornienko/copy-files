@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "copy-files-skornienko"
-version = "0.1.0"
+version = "0.2.2"
 description = ""
 authors = ["Sergey Kornienko <skornienko29@gmail.com>"]
 packages = [
@@ -15,6 +15,7 @@ progress = "^1.5"
 flake8 = "^3.8.4"
 pytest = "^6.2.2"
 pytest-cov = "^2.11.1"
+twine = "^3.4.1"
 
 
 [build-system]

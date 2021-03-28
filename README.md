@@ -16,9 +16,9 @@ pip install -i https://test.pypi.org/simple/ --extra-index-url https://pypi.org/
 ```
 
 <details>
-<summary>Examples of working the program</summary>
+<summary>Examples of working the program - asciinema</summary>
 
-
+[![asciicast](https://asciinema.org/a/403375.svg)](https://asciinema.org/a/403375)
 
 
 </details>

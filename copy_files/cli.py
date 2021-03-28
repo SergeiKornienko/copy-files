@@ -11,7 +11,7 @@ def get_args():
         description=DESCRIPTION,
     )
     parser.add_argument(
-        'path', type=pathlib.Path, help='path to the config file")',
+        'path', type=pathlib.Path, help='path to the config file',
     )
     parser.add_argument(
         '-l', '--loglevel',
