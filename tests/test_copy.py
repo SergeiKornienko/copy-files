@@ -1,6 +1,5 @@
 from copy_files.copy_files import copy, prepare
 import os
-import glob
 import pytest
 from xml.etree import ElementTree
 from shutil import rmtree
@@ -43,7 +42,6 @@ def test_copy():
     assert file2 == file5
     rmtree('tests/fixtures/4/')
     rmtree('tests/fixtures/5/')
-
 
 
 def test_prepare():
