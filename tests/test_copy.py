@@ -2,6 +2,7 @@ from copy_files.copy_files import copy, prepare
 import os
 import glob
 import pytest
+from xml.etree import ElementTree
 
 XML = 'tests/fixtures/file.xml'
 PATHS = [
@@ -53,9 +54,6 @@ def test_prepare():
 
 def test_copy_exception():
     with pytest.raises(OSError):
-        copy('./tests/fixtures/config2.xml')
-    with pytest.raises(OSError):
         copy('./tests/fixtures/config3.xml')
-    with pytest.raises(Exception):
+    with pytest.raises(ElementTree.ParseError):
         copy('./tests/fixtures/config4.xml')
-

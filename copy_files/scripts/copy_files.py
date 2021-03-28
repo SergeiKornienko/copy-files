@@ -2,6 +2,7 @@ from copy_files.cli import get_args
 from copy_files.copy_files import copy
 import sys
 from copy_files.log import setup
+from xml.etree import ElementTree
 
 
 def main():
@@ -14,7 +15,7 @@ def main():
     setup(loglevel=log)
     try:
         copy(path)
-    except OSError:
+    except (OSError, ElementTree.ParseError):
         sys.exit(1)
 
 

@@ -10,21 +10,21 @@ def copy(path_to_config):
     for path in paths:
         try:
             src = join(path['source_path'], path['file_name'])
-            dst = join(path['destination_path'], path['file_name'])
+            dst = path['destination_path']
             with Bar(
-                    f"{'Copy '}{src[:70]}{' to '}{dst[:70]}{': '}",
-                    max=len(paths) / 100,
-                    suffix='%(percent)d%%') as bar_file:
-                try:
-                    copy_file(src, dst)
-                    logging.info(f"{'File copy '}{src}{' to '}{dst}{': '}")
-                    bar_file.next()
-                except OSError as error:
-                    logging.warning('Error copy of file: {a}'.format(a=error))
-                    bar_file.next()
-                    raise
+                f"{'Copy '}{src[:70]}{' to '}{dst[:70]}{': '}",
+                max=len(paths) / 100,
+                suffix='%(percent)d%%',
+            ) as bar_file:
+                copy_file(src, dst)
+                bar_file.next()
+                logging.info(f"{'File copy '}{src}{' to '}{dst}{': '}")
+        except OSError as error:
+            logging.warning('Error copy of file: {a}'.format(a=error))
         except KeyError as error:
-            logging.warning('Incorrect discription of file: {a}'.format(a=error))
+            logging.warning(
+                'Incorrect discription of file: {a}'.format(a=error),
+            )
 
 
 def open_file(path):
@@ -46,6 +46,6 @@ def prepare(content_xml):
             paths.append(child.attrib)
         logging.debug(f'{"Prepare of paths files: "}{paths}')
         return paths
-    except Exception as e:
+    except ElementTree.ParseError as e:
         logging.error(f'{"Error of content config file: "}{e}')
-
+        raise
