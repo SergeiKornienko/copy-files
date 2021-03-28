@@ -3,6 +3,7 @@ import os
 import glob
 import pytest
 from xml.etree import ElementTree
+from shutil import rmtree
 
 XML = 'tests/fixtures/file.xml'
 PATHS = [
@@ -27,6 +28,8 @@ DST_FILE = '/etc'
 
 
 def test_copy():
+    os.mkdir('tests/fixtures/4/')
+    os.mkdir('tests/fixtures/5/')
     copy('tests/fixtures/config.xml')
     with open('tests/fixtures/1/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
         file1 = infile.read()
@@ -38,12 +41,9 @@ def test_copy():
     with open('tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
         file5 = infile.read()
     assert file2 == file5
-    files6 = glob.glob('tests/fixtures/4/*')
-    for f in files6:
-        os.remove(f)
-    files7 = glob.glob('tests/fixtures/5/*')
-    for f in files7:
-        os.remove(f)
+    rmtree('tests/fixtures/4/')
+    rmtree('tests/fixtures/5/')
+
 
 
 def test_prepare():
