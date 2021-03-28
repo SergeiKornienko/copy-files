@@ -1,7 +1,7 @@
 <config>
     <file
-            source_path="tests/fixtures/4/"
-            destination_path="tests/fixtures/5/"
+            source_path="./tests/fixtures/4/"
+            destination_path="./tests/fixtures/5/"
             file_name="Krug S. Круг С. - Не заставляйте меня думать"
     />
 </config>
