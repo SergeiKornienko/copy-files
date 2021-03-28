@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "copy-files-skornienko"
-version = "0.2.3"
+version = "0.2.4"
 description = ""
 authors = ["Sergey Kornienko <skornienko29@gmail.com>"]
 packages = [
