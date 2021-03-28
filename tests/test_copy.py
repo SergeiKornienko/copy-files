@@ -27,21 +27,21 @@ DST_FILE = '/etc'
 
 
 def test_copy():
-    copy('./tests/fixtures/config.xml')
-    with open('./tests/fixtures/1/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
+    copy('tests/fixtures/config.xml')
+    with open('tests/fixtures/1/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
         file1 = infile.read()
-    with open('./tests/fixtures/4/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
+    with open('tests/fixtures/4/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
         file4 = infile.read()
     assert file1 == file4
-    with open('./tests/fixtures/2/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
+    with open('tests/fixtures/2/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
         file2 = infile.read()
-    with open('./tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
+    with open('tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
         file5 = infile.read()
     assert file2 == file5
-    files6 = glob.glob('./tests/fixtures/4/*')
+    files6 = glob.glob('tests/fixtures/4/*')
     for f in files6:
         os.remove(f)
-    files7 = glob.glob('./tests/fixtures/5/*')
+    files7 = glob.glob('tests/fixtures/5/*')
     for f in files7:
         os.remove(f)
 
@@ -54,6 +54,6 @@ def test_prepare():
 
 def test_copy_exception():
     with pytest.raises(OSError):
-        copy('./tests/fixtures/config3.xml')
+        copy('tests/fixtures/config3.xml')
     with pytest.raises(ElementTree.ParseError):
-        copy('./tests/fixtures/config4.xml')
+        copy('tests/fixtures/config4.xml')
