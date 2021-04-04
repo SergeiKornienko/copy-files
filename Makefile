@@ -15,3 +15,4 @@ lint:
 
 pytest:
 		poetry run pytest --cov=copy_files tests/ --cov-report xml
+

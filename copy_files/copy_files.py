@@ -1,16 +1,18 @@
-from os.path import join
+from os.path import join, normpath
 from shutil import copy as copy_file
 from progress.bar import Bar
 import logging
 from xml.etree import ElementTree
+from pathlib import Path
 
 
 def copy(path_to_config):
     paths = prepare(open_file(path_to_config))
     for path in paths:
         try:
-            src = join(path['source_path'], path['file_name'])
-            dst = path['destination_path']
+            src = normpath(join(path['source_path'], path['file_name']))
+            logging.debug('source_path: {a}'.format(a=src))
+            dst = normpath(path['destination_path'])
             with Bar(
                 f"{'Copy '}{src[:70]}{' to '}{dst[:70]}{': '}",
                 max=len(paths) / 100,
@@ -28,8 +30,9 @@ def copy(path_to_config):
 
 
 def open_file(path):
+    logging.debug('path_to_config: {a}'.format(a=path))
     try:
-        with open(path, 'r') as infile:
+        with open(Path(path), 'r') as infile:
             content = infile.read()
         logging.info(f'{"Open config-file: "}{path}')
         return content

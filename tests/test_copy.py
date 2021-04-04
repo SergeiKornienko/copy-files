@@ -7,8 +7,8 @@ from shutil import rmtree
 XML = 'tests/fixtures/file.xml'
 PATHS = [
     {
-        'source_path': 'C:\\Windows\\system32',
-        'destination_path': 'C:\\Program files',
+        'source_path': 'C:\Windows\system32',  # noqa: W605
+        'destination_path': 'C:\Program files',  # noqa: W605
         'file_name': 'kernel32.dll',
     },
     {
@@ -27,9 +27,11 @@ DST_FILE = '/etc'
 
 
 def test_copy():
+    rmtree('tests/fixtures/4/')
+    rmtree('tests/fixtures/5/')
     os.mkdir('tests/fixtures/4/')
     os.mkdir('tests/fixtures/5/')
-    copy('tests/fixtures/config.xml')
+    os.system('poetry run copy-files tests/fixtures/config.xml')
     with open('tests/fixtures/1/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
         file1 = infile.read()
     with open('tests/fixtures/4/Krug S. Круг С. - Не заставляйте меня думать', 'rb') as infile:  # noqa: E501
@@ -40,8 +42,6 @@ def test_copy():
     with open('tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
         file5 = infile.read()
     assert file2 == file5
-    rmtree('tests/fixtures/4/')
-    rmtree('tests/fixtures/5/')
 
 
 def test_prepare():
