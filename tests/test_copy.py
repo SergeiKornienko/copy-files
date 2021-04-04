@@ -42,8 +42,7 @@ def test_copy():
     with open('tests/fixtures/5/Операционная система Unix (Робачевский, 2003).djvu', 'rb') as infile:  # noqa: E501
         file5 = infile.read()
     assert file2 == file5
-    rmtree('tests/fixtures/4/')
-    rmtree('tests/fixtures/5/')
+
 
 
 def test_prepare():
