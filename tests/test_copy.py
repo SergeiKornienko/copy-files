@@ -44,7 +44,6 @@ def test_copy():
     assert file2 == file5
 
 
-
 def test_prepare():
     with open(XML) as infile:
         xml_input = infile.read()
